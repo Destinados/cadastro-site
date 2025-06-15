@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Industria</title>
+</head>
+<body>
+<h1>Cadastro</h1>
+<form id="cadastroForm">
+  <label>Nome Completo: <input type="text" name="nome" required></label><br>
+  <label>Email: <input type="email" name="email" required></label><br>
+  <label>Telefone: <input type="tel" name="telefone" required></label><br>
+  <button type="submit">Próximo</button>
+</form>
+
+<script>
+  document.getElementById("cadastroForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const formData = new formData(document.querySelector("#cadastroForm"));
+    const params = new URLSearchParams(formData).toString();
+    console.log(params);
+    window.location.href = "confirmacao.html?" + params;
+  })
+</script>
+</body>
+</html>

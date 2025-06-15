@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+ <h1>Registros Salvos</h1>
+  <table border="1">
+    <thead>
+      <tr><th>Nome</th><th>Email</th><th>Telefone</th></tr>
+    </thead>
+    <tbody id="tabela">
+    </tbody>
+  </table>
+
+  <script>
+    const registros = JSON.parse(localStorage.getItem("cadastros") || "[]");
+    const tbody = document.getElementById("tabela");
+
+    registros.forEach(reg => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${reg.nome}</td>
+        <td>${reg.email}</td>
+        <td>${reg.telefone}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  </script>
+</body>
+</html>

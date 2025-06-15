@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>confirmar Dados</title>
+</head>
+<body>
+<h1>Confirme seus Dados:</h1>
+<ul id="dados"></ul>
+<button id="confirmar">Confirmar</button>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const dados = {
+    nome: params.get("nome"),
+    email: params.get("email"),
+    telefone: params.get("telefone")
+  };
+
+  const ul = document.getElementById("dados");
+    for (const chave in dados) {
+      const li = document.createElement("li");
+      li.textContent = `${chave}: ${dados[chave]}`;
+      ul.appendChild(li);
+    }
+
+  document.getElementById("confirmar").addEventListener("click", () => {
+    let registros = JSON.parse(localStorage.getItem("cadastro") || "[]");
+    registros.push(dados);
+    localStorage.setItem("cadastros", JSON.stringify(registros));
+    window.location.href = "registros.html";
+  });
+</script>
+</body>
+</html>
