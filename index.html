@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Industria</title>
+  <title>Cadastro</title>
 </head>
 <body>
 <h1>Cadastro</h1>
@@ -14,13 +14,13 @@
 </form>
 
 <script>
-  document.getElementById("cadastroForm").addEventListener("submit", function(event) {
+  const form = document.getElementById("cadastroForm");
+  form.addEventListener("submit", function(event) {
     event.preventDefault();
-    const formData = new formData(document.querySelector("#cadastroForm"));
+    const formData = new FormData(form);
     const params = new URLSearchParams(formData).toString();
-    console.log(params);
     window.location.href = "confirmacao.html?" + params;
-  })
+  });
 </script>
 </body>
 </html>
